@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "18304163251",
+    "project_id": "gigtrack-a25ec",
+    "storage_bucket": "gigtrack-a25ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18304163251:android:5f1f21001c7838e571ffc6",
+        "android_client_info": {
+          "package_name": "com.example.gigtrack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBruVlb3OzXi6BoVNdA11-H6-FhKtBIHiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
