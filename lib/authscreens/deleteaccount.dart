@@ -1,19 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gigtrack/firebaseservices/auth_services.dart';
-import 'package:gigtrack/authscreens/register.dart';
-import 'package:gigtrack/authscreens/resetpassword.dart';
-import 'package:gigtrack/utils/navbar.dart';
+import 'package:gigtrack/onboarding/onboarding.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class DeleteAccount extends StatefulWidget {
+  const DeleteAccount({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<DeleteAccount> createState() => _DeleteAccountState();
 }
 
-class _LoginState extends State<Login> {
+class _DeleteAccountState extends State<DeleteAccount> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -21,13 +20,13 @@ class _LoginState extends State<Login> {
   String? passwordError;
   String? errorMessage = '';
 
-  void login() async {
+  void DeleteAccount() async {
     setState(() {
       errorMessage = null;
     });
 
     String email = _emailController.text.trim();
-    String password = _passwordController.text;
+    String password = _passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
       setState(() {
@@ -37,20 +36,17 @@ class _LoginState extends State<Login> {
     }
 
     try {
-      await authService.value.signIn(email: email, password: password);
-      Navigator.pushReplacement(
+      await authService.value.deleteAccount(email: email, password: password);
+      Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const Navbar()),
+        MaterialPageRoute(builder: (context) => const Onboarding()),
+        (route) => false,
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message ?? 'An error occurred.This is not working.';
       });
     }
-  }
-
-  void popPage() {
-    Navigator.pop(context);
   }
 
   @override
@@ -71,18 +67,17 @@ class _LoginState extends State<Login> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Welcome Back!!",
+                        "GoodBye!!",
                         style: GoogleFonts.bebasNeue(fontSize: 50),
                       ),
                       Text(
-                        "You have been missed 🥹.",
+                        "You will be missed 🥹.",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
@@ -92,7 +87,11 @@ class _LoginState extends State<Login> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 60),
+
+                Padding(
+                  padding: EdgeInsets.only(left: 2, right: 2),
+                  child: Lottie.asset('assets/anims/cry.json'),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Column(
@@ -138,33 +137,7 @@ class _LoginState extends State<Login> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Resetpw(),
-                        ),
-                      );
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Forget Password?",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -174,20 +147,22 @@ class _LoginState extends State<Login> {
                     softWrap: true,
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: GestureDetector(
-                    onTap: login,
+                    onTap: () {
+                      DeleteAccount();
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.red[900],
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Center(
                         child: Text(
-                          "Login",
+                          "Delete Account",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
@@ -199,32 +174,6 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Not a member? ",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Register(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Register Now!",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),

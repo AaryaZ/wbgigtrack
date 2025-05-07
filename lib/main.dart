@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:gigtrack/onboarding/o1.dart';
 import 'package:gigtrack/onboarding/onboarding.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'firebaseservices/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gigtrack/auth_services.dart';
+import 'package:gigtrack/firebaseservices/auth_services.dart';
 import 'package:gigtrack/authscreens/login.dart';
 import 'package:gigtrack/utils/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';

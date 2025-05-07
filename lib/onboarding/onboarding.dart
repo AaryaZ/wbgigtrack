@@ -1,6 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:gigtrack/auth_layout.dart';
+import 'package:gigtrack/firebaseservices/auth_layout.dart';
 import 'package:gigtrack/onboarding/o1.dart';
 import 'package:gigtrack/onboarding/o2.dart';
 import 'package:gigtrack/onboarding/o3.dart';
