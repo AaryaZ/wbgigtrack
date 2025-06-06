@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gigtrack/firebaseservices/auth_services.dart';
-import 'package:gigtrack/authscreens/login.dart';
 import 'package:gigtrack/authscreens/register.dart';
-// import 'package:gigtrack/home.dart';
 import 'package:gigtrack/utils/loading.dart';
 import 'package:gigtrack/utils/navbar.dart';
 

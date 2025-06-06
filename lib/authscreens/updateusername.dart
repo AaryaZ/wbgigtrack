@@ -61,7 +61,7 @@ class _UpdateusernameState extends State<Updateusername> {
       SnackBar(
         backgroundColor: Colors.green[300],
         content: Text(
-          'Username updated successfully',
+          'Username updated successfully. This may take a while.',
           style: TextStyle(color: const Color.fromRGBO(19, 77, 25, 1)),
         ),
         duration: const Duration(seconds: 2),

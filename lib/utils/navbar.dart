@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gigtrack/home.dart';
 import 'package:gigtrack/settings.dart';
 
 class Navbar extends StatelessWidget {
@@ -50,5 +51,5 @@ class Navbar extends StatelessWidget {
 class Navigationcontroller extends GetxController {
   final Rx<int> _selectedIndex = 0.obs;
 
-  final screens = [Container(color: Colors.grey[200]), const Settings()];
+  final screens = [Home(), Settings()];
 }
